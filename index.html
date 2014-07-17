@@ -1,20 +1,17 @@
 <!doctype html>
 
-<html lang="en" ng-app = "buttonApp">
+<html lang="en" ng-app = "cbButtonSwitch">
 <head>
   <meta charset="utf-8">
 
   <title>Buttons</title>
   <meta name="description" content="Buttons">
   <meta name="author" content="Buttons">
-
-  <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/cbButtonSwitch.css">
 
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -22,111 +19,31 @@
 
 <body>
 
+  <h2>Button cb Switches</h2>
 
-  <h2>Radio buttons</h2>
+<div ng-controller="BtnAppContrl">
 
-  <!-- <div ng-controller="buttonApp"> -->
-
-
-  <script>
-
-    var buttonApp = angular.module( 'buttonApp', [] );
-
-    buttonApp.directive( 'cbRadioButtons', function () {
-        return {
-            restrict: 'EA',
-            controller: function( $scope, $element, $attrs, $transclude ) {
-                // Controller code goes here.
-                $scope.selected = "content";
-               console.log($scope.selected, "scope selected");
-            },
-
-            link: function postLink( scope, element, attributes, controller ) {
-
-                var buttons = element.find('button');
-
-                //console.log(buttons, "buttons");
-
-                angular.forEach( buttons, function( button ) {
-
-                    //console.log( button );
-           
-
-                     if ( $(button).attr('id') == "off") {
-                        //console.log( button );                     
-                        //$(button).addClass( 'btn-selected' );
-                        $(button).on('click', function(){
-                            //alert("clicked off");
-                            scope.selected = "off";
-                            console.log(scope.selected, "selected button");
-
-                        });
-
-                    }
-
-                    if ( $(button).attr('id') == "view" ) {
-                        //console.log( button );
-                        //$(button).addClass( 'btn-selected' );
-                        $(button).on('click', function(){
-                           // alert("clicked view");
-                            scope.selected = "view";
-                            console.log(scope.selected, "selected button");
-
-                        });
-
-                    }
-
-                    if ( $(button).attr('id') == "content" ) {
-                        //console.log( button );
-                        //$(button).addClass( 'btn-selected' );
-                        $(button).on('click', function(){
-                           // alert("clicked content");
-                            scope.selected = "content";
-                            console.log(scope.selected, "selected button");
-
-                        });
-
-                    }
-
-                     if ( $(button).attr('id') == scope.selected ) {
-                        console.log( button );
-                        $(button).addClass( 'btn-selected' );
-                        /*$(button).on('click', function(){
-                            alert("clicked");
-                        });*/
-
-                    }
+        <cb-button-switch selected="editMode">
+       <!--  <cb-button-switch selected="cb-select-button"> -->
+            <button id = "off">Off</button>
+            <button id="content">Content</button>
+            <button id = "view">View</button>
+        </cb-button-switch>
 
 
+        <cb-button-switch selected="align">
+            <button id = "left">Left</button>
+            <button id="centre">Centre</button>
+            <button id = "right">Right</button>
+        </cb-button-switch>
 
-                });
-
-                
-            },          
-        };  
-    });
-
-</script>
-
-
-<!--this tag means nothing for now. it will be an angular tag-->
-<cb-radio-buttons>
-<button id = "off">Off</button>
-<button id="content">Content</button>
-<button id = "view">View</button>
-</cb-radio-buttons>
+        <div>Selected edit mode: {{editMode}}</div>
+        <div>Selected align: {{align}}</div>
 
 
-<!-- </div> --><!--end of ng controller-->
+ </div>
+ <!--end of ng controller-->
 
-<!--testing if angular works-->
-<!-- <div>
-  <input type="text" ng-model="yourName" placeholder="Enter a name here">
-  <h1>Hello, {{ yourName }}!</h1>
-</div> -->
-
-
-
-<!--  <script src="js/main-script.js"></script> -->
+<script src="js/cbButtonSwitch.js"></script>
 </body>
 </html>
