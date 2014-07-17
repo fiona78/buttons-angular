@@ -37,45 +37,71 @@
             restrict: 'EA',
             controller: function( $scope, $element, $attrs, $transclude ) {
                 // Controller code goes here.
-                $scope.selected = "view";
-                //"off is the id of the of a child element
+                $scope.selected = "content";
+               console.log($scope.selected, "scope selected");
             },
 
             link: function postLink( scope, element, attributes, controller ) {
 
                 var buttons = element.find('button');
 
-                console.log(buttons, "buttons");
+                //console.log(buttons, "buttons");
 
                 angular.forEach( buttons, function( button ) {
 
                     //console.log( button );
+           
 
-                    //if ( $( this ).is( "#off" ) ) {
-                    //do something
-                    //}$9
-
-                    if ( $(button).attr('id') == scope.selected ) {
-                        console.log( button );
-                        
-                        $(button).addClass('btn-selected');
+                     if ( $(button).attr('id') == "off") {
+                        //console.log( button );                     
+                        //$(button).addClass( 'btn-selected' );
                         $(button).on('click', function(){
-                            alert("clicked");
+                            //alert("clicked off");
+                            scope.selected = "off";
+                            console.log(scope.selected, "selected button");
 
                         });
 
-
-
-
-
-                    //Hook on click events on the buttons
-                    //mark selected as selected
-                    //do something
                     }
+
+                    if ( $(button).attr('id') == "view" ) {
+                        //console.log( button );
+                        //$(button).addClass( 'btn-selected' );
+                        $(button).on('click', function(){
+                           // alert("clicked view");
+                            scope.selected = "view";
+                            console.log(scope.selected, "selected button");
+
+                        });
+
+                    }
+
+                    if ( $(button).attr('id') == "content" ) {
+                        //console.log( button );
+                        //$(button).addClass( 'btn-selected' );
+                        $(button).on('click', function(){
+                           // alert("clicked content");
+                            scope.selected = "content";
+                            console.log(scope.selected, "selected button");
+
+                        });
+
+                    }
+
+                     if ( $(button).attr('id') == scope.selected ) {
+                        console.log( button );
+                        $(button).addClass( 'btn-selected' );
+                        /*$(button).on('click', function(){
+                            alert("clicked");
+                        });*/
+
+                    }
+
+
+
                 });
 
-                //element.addClass("addedClass");
-                //need to reach the children
+                
             },          
         };  
     });
@@ -85,22 +111,19 @@
 
 <!--this tag means nothing for now. it will be an angular tag-->
 <cb-radio-buttons>
-<button id = "off">Left</button>
-<button id="content">Center</button>
-<button id = "view">Right</button>
+<button id = "off">Off</button>
+<button id="content">Content</button>
+<button id = "view">View</button>
 </cb-radio-buttons>
 
 
 <!-- </div> --><!--end of ng controller-->
 
-
-<div>
+<!--testing if angular works-->
+<!-- <div>
   <input type="text" ng-model="yourName" placeholder="Enter a name here">
   <h1>Hello, {{ yourName }}!</h1>
-</div>
-
-
-
+</div> -->
 
 
 
