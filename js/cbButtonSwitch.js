@@ -14,7 +14,7 @@ var cbButtonSwitch = angular.module( 'cbButtonSwitch', [] );
             scope: {
          
                 selected: '='
-             /*   selected: 'cbSelectButton'*/
+               /* selected: 'cbSelectedButton'*/
 
                    
             },
