@@ -41,3 +41,8 @@ button:focus {
   outline: 0;
   box-shadow: none;
 }
+
+/* line 47, ../sass/style.scss */
+.btn-selected {
+  background-color: #e6e6e6;
+}
